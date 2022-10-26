@@ -4,15 +4,19 @@ package com.bignerdranch.android.beatbox
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.*
 import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 
 class SoundViewModelTest {
     private lateinit var sound: Sound
     private lateinit var subject: SoundViewModel
+    private lateinit var beatBox: BeatBox
 
     @org.junit.Before
     fun setUp() {
+        beatBox = mock(BeatBox::class.java)
         sound = Sound("assetPatch")
-        subject = SoundViewModel()
+        subject = SoundViewModel(beatBox)
         subject.sound = sound
     }
 
@@ -24,5 +28,7 @@ class SoundViewModelTest {
     @Test
     fun callsBeatBoxPlayOnButtonClicked() {
         subject.onButtonClicked()
+
+        verify(beatBox).play(sound)
     }
 }

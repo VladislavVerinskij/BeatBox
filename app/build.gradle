@@ -51,5 +51,6 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.25.0'
     testImplementation 'org.mockito:mockito-inline:2.25.0'
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'support.test.espresso:espresso-core'
 
 }
